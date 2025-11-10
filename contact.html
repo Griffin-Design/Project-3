@@ -82,23 +82,31 @@
         height: 56px; /* slightly bigger than text (28px) */
         margin-right: 10px; /* space between SVG and text */
       }
-      .banner {
-        width: 100%;
-        height: 400px; /* adjust as needed */
-        background-color: #ddd; /* placeholder background */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative; /* for banner-text absolute positioning */
-        margin: 0; /* ensures it touches header */
-      }
+     /* Banner Container */
+.banner {
+  width: 100%;
+  height: 400px; /* or any fixed size you want for your banner */
+  background-color: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
 
-      .banner-image img.banner-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* ensures it covers the banner area nicely */
-        display: block;
-      }
+/* Image container */
+.banner-image {
+  width: 100%;
+  height: 100%; /* fill the entire banner */
+  overflow: hidden; /* prevent image from overflowing parent */
+}
+
+/* Image itself - responsive and centered */
+.banner-image img.banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fills area proportionally, without distortion */
+}
+
 
       .accent-rectangle {
         width: 100%;
@@ -114,6 +122,7 @@
         font-weight: bold;
         color: #3e1d0e;
         box-sizing: border-box; /* important! */
+        z-index: 1;
       }
       #toggle-nav-btn {
         display: none;
@@ -315,6 +324,18 @@
         padding: 0 40px;
         box-sizing: border-box;
       }
+      @media (min-width: 768px) {
+  .banner {
+    height: 400px;
+  }
+}
+
+@media (max-width: 767px) {
+  .banner {
+    height: auto; /* or a fixed value, e.g. 250px */
+  }
+}
+
       @media (max-width: 767px) {
         header {
           position: relative;
@@ -446,14 +467,11 @@
     </header>
 
     <div class="banner">
-      <div class="banner-image">
-        <img
-          src="images/banner.jpg"
-          alt="Books & Brew Banner"
-          class="banner-img"
-        />
-      </div>
-    </div>
+  <div class="banner-image">
+    <img src="images/coffee&mail.jpg" alt="Books & Brew Banner" class="banner-img" />
+  </div>
+</div>
+
 
     <div class="accent-rectangle">
       <h2>Contact</h2>
@@ -541,8 +559,10 @@
         <div class="footer-left">
           <!-- Replace logo placeholder with SVG -->
           <div class="footer-logo">
-            <img src="SVG/B&B.svg" alt="Books & Brew Logo" />
-          </div>
+  <a href="index.html">
+    <img src="SVG/B&B.svg" alt="Books & Brew Logo" />
+  </a>
+</div>
           <div class="hours-block">
             <div class="hours-title">OUR HOURS</div>
             <div class="hours-content">

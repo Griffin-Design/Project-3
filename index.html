@@ -82,39 +82,56 @@
         height: 56px; /* slightly bigger than text (28px) */
         margin-right: 10px; /* space between SVG and text */
       }
-      .banner {
-        width: 100%;
-        height: 400px; /* adjust as needed */
-        background-color: #ddd; /* placeholder background */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative; /* for banner-text absolute positioning */
-        margin: 0; /* ensures it touches header */
-      }
 
-      .banner-image img.banner-img {
+      .accent-rectangle,
+      .second-accent-rectangle {
         width: 100%;
-        height: 100%;
-        object-fit: cover; /* ensures it covers the banner area nicely */
-        display: block;
-      }
-
-      .accent-rectangle {
-        width: 100%;
-        max-width: 100%; /* ensure it doesn't exceed viewport */
         height: 61px;
-        background-color: #e5cdb1; /* visible color */
+        background-color: #e5cdb1;
         border: 1px solid #a1663c;
-        margin: 0; /* no spacing */
+        margin: 0 auto; /* Center the rectangle */
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 1.5em;
         font-weight: bold;
         color: #3e1d0e;
-        box-sizing: border-box; /* important! */
+        box-sizing: border-box;
+        margin-top: 2em; /* Add space above the rectangle */
       }
+
+      .banner,
+      .second-banner,
+      .third-banner {
+        max-width: 1440px;
+        width: 100%;
+        margin: 0 auto; /* Center the banner on screen */
+        padding: 2em; /* Optional: Add some breathing space inside the banner */
+      }
+      .banner {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 400px;
+        background-size: cover;
+        background-position: center;
+        text-align: center;
+        padding: 2em;
+        color: white;
+      }
+
+      .banner-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 80%;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 2em;
+        border-radius: 10px;
+      }
+
       #toggle-nav-btn {
         display: none;
         position: absolute;
@@ -157,27 +174,76 @@
       }
 
       .second-banner {
-        width: 100%;
-        height: 400px;
-        background-color: #aaa; /* You can change the color or image */
-        display: flex;
-        justify-content: center;
-        align-items: center;
         position: relative;
+        display: flex;
+        align-items: center;
+        height: 400px;
+        background-size: cover;
+        background-position: left;
+        padding: 2em;
       }
 
-      .second-accent-rectangle {
-        width: 100%;
-        height: 61px;
-        background-color: #e5cdb1;
-        border: 1px solid #a1663c;
-        margin: 0;
+      .second-text {
+        max-width: 60%;
+      }
+
+     .nav-button {
+  margin-top: 1em; /* Same as in second banner */
+  padding: 0.75em 1.5em;
+  font-size: 1rem;
+  background-color: #3e1d0e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.nav-button:hover {
+  background-color: #a1663c;
+}
+
+      .third-banner {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.5em;
-        font-weight: bold;
+        width: 100%;
+        height: 559px;
+      }
+
+      .text-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  /* Remove this line if you want zero spacing */
+  /* gap: 1em; */
+}
+
+.text-box p,
+.text-box h4 {
+  margin: 1em 0;
+}
+
+.text-box > * + * { /* Add space between immediate siblings */
+  margin-top: 1em;
+}
+
+
+      .text-box,
+      .banner-right {
+        max-width: 1440px;
+        width: 100%;
+        margin: 0 auto;
+        font-size: 1.5rem;
+        width: 720px;
+        box-sizing: border-box;
+        padding: 2em;
         color: #3e1d0e;
+        font-size: 1.5em;
+      }
+
+      .banner-right {
+        background-image: url("images/third-banner.jpg");
+        background-size: cover;
+        background-position: right center;
       }
 
       footer {
@@ -327,6 +393,26 @@
           z-index: 1001;
         }
       }
+      @media (max-width: 768px) {
+        .banner,
+        .second-banner,
+        .third-banner,
+        .text-box {
+          padding: 1em; /* Reduce padding for smaller screens */
+          font-size: 1rem;
+        }
+
+        .banner-text {
+          max-width: 90%; /* Adjust text box to fit the screen better on mobile */
+          margin: auto;
+        }
+      }
+      @media (max-width: 768px) {
+  .nav-button {
+    font-size: 0.9rem;
+    padding: 0.6em 1.2em;
+  }
+}
 
       @media (max-width: 767px) {
         .footer-content {
@@ -374,34 +460,59 @@
         </nav>
       </div>
     </header>
-
-  <!-- First Banner -->
-    <div class="banner">
-      <div class="banner-image">
-        <img
-          src="images/banner.jpg"
-          alt="Books & Brew Banner"
-          class="banner-img"
-        />
+    <main>
+      <!-- First Banner -->
+      <div class="banner" style="background-image: url('images/banner.jpg')">
+        <div class="banner-text">
+          Enjoy a variety of coffees and freshly made food, while you browse our
+          wide selection of books. There's always something new to discover
+        </div>
       </div>
-    </div>
 
-  <div class="accent-rectangle"></div>
+      <!-- Accent Rectangle -->
+      <div class="accent-rectangle"></div>
+      
 
-    <!-- Second Banner -->
-    <div class="second-banner">
-      <div class="banner-image">
-        <img
-          src="images/second-banner.jpg"
-          alt="Second Banner"
-          class="banner-img"
-        />
+      <!-- Second Banner -->
+      <div
+        class="second-banner"
+        style="background-image: url('images/second-banner.jpg')"
+      >
+        <div class="second-text">
+          <h4>Menu Brew:</h4>
+          <p>
+            We pride are ourselves on our wide range of coffees and teas for all
+            patrons to enjoy<br />
+            come and take a look at we have in store for you
+          </p>
+          <button class="nav-button" onclick="window.location.href='menu.html'">
+            Our Menu
+          </button>
+        </div>
       </div>
-    </div>
 
-    <div class="second-accent-rectangle"></div>
+      <!-- Second Accent Rectangle -->
+      <div class="second-accent-rectangle"></div>
 
-    <main></main>
+      <!-- Third Banner -->
+      <div class="third-banner">
+        <div class="text-box">
+          <h4>Story:</h4>
+    <p>
+  Books & Brews stands as a testament to the enduring power of love,
+  passion, and a good cup of coffee and a good book. From San
+  Francisco to Harrisburg, guided by the love for coffee, Books & Brew
+  has left an indelible mark on the local community.
+</p>
+<button class="nav-button" onclick="window.location.href='story.html'">
+  Our Story
+</button>
+
+
+        </div>
+        <div class="banner-right"></div>
+      </div>
+    </main>
 
     <script>
       // Perform this after the window has loaded
@@ -426,8 +537,11 @@
         <div class="footer-left">
           <!-- Replace logo placeholder with SVG -->
           <div class="footer-logo">
-            <img src="SVG/B&B.svg" alt="Books & Brew Logo" />
-          </div>
+  <a href="index.html">
+    <img src="SVG/B&B.svg" alt="Books & Brew Logo" />
+  </a>
+</div>
+
           <div class="hours-block">
             <div class="hours-title">OUR HOURS</div>
             <div class="hours-content">
