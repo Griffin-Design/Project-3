@@ -16,6 +16,11 @@
         box-sizing: border-box;
       }
 
+      main {
+        flex: 1 0 auto;
+        padding: 0; /* remove top/bottom padding to avoid extra space */
+      }
+
       html,
       body {
         font-family: "Inter", sans-serif;
@@ -83,17 +88,19 @@
         margin-right: 10px; /* space between SVG and text */
       }
 
-      .accent-rectangle{
-        width: 100%;
-        height: 61px;
-        background-color: #e5cdb1;
-        border: 1px solid #a1663c;
-        margin: 0 auto; /* Center the rectangle */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
-      }
+     .accent-rectangle {
+    width: 100%;
+    height: 61px;
+    background-color: #e5cdb1;
+    border: 1px solid #a1663c;
+    margin: 0 auto; /* ← removed top margin */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #3e1d0e;
+}
 
       .second-accent-rectangle {
         width: 1440px;
@@ -107,31 +114,42 @@
         box-sizing: border-box;
       }
 
-      /* Ensure the image inside all banners scales correctly */
       .banner-img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
 
+      .banner-image img.banner-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.85; /* Slightly transparent image for better text visibility */
+      }
+
       .banner,
+      .second-banner,
+      .third-banner {
+        overflow: hidden; /* Prevents images from spilling out of the container */
+      }
+
       .second-banner,
       .third-banner {
         max-width: 1440px;
         width: 100%;
         margin: 0 auto; /* Center the banner on screen */
       }
+
       .banner {
-        position: relative;
+        width: 100%;
+        height: 400px;
+        margin: 0;
+        padding: 0;
+        background-color: #ddd;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 400px;
-        background-size: cover;
-        background-position: center;
-        text-align: center;
-        padding: 2em;
-        color: white;
+        position: relative;
       }
 
       .banner-text {
@@ -140,9 +158,11 @@
         left: 50%;
         transform: translate(-50%, -50%);
         max-width: 80%;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(255, 255, 255, 0.9);
         padding: 2em;
         border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
       }
 
       #toggle-nav-btn {
@@ -186,52 +206,50 @@
         box-sizing: border-box;
       }
 
- /* Ensure the second banner has a clean layout */
-.second-banner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1440px;
-  margin: 0 auto;
-}
+      /* Ensure the second banner has a clean layout */
+      .second-banner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1440px;
+        margin: 0 auto;
+      }
 
-.image-container {
-  text-align: right;
-  margin-top: 0; /* remove extra margin causing spacing */
-  flex: 1;
-  max-width: 50%;
-}
+      .image-container {
+        text-align: right;
+        margin-top: 0; /* remove extra margin causing spacing */
+        flex: 1;
+        max-width: 50%;
+      }
 
-.banner-img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
+      .banner-img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
 
-/* Text container */
-.second-text {
-  flex: 1;
-  max-width: 50%;
-  padding-right: 2em;
-}
+      /* Text container */
+      .second-text {
+        flex: 1;
+        max-width: 50%;
+        padding-right: 2em;
+      }
 
+      /* Optional: Button styling (already in your CSS) */
+      .nav-button {
+        margin-top: 1em;
+        padding: 0.75em 1.5em;
+        font-size: 1rem;
+        background-color: #3e1d0e;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
 
-/* Optional: Button styling (already in your CSS) */
-.nav-button {
-  margin-top: 1em;
-  padding: 0.75em 1.5em;
-  font-size: 1rem;
-  background-color: #3e1d0e;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.nav-button:hover {
-  background-color: #a1663c;
-}
-
+      .nav-button:hover {
+        background-color: #a1663c;
+      }
 
       .third-banner {
         display: flex;
@@ -441,37 +459,34 @@
           z-index: 1001;
         }
       }
-      @media (max-width: 768px) {
-        .banner,
-        .second-banner,
-        .third-banner,
-        .text-box {
-          padding: 1em; /* Reduce padding for smaller screens */
-          font-size: 1rem;
-        }
-
-        .banner-text {
-          max-width: 90%; /* Adjust text box to fit the screen better on mobile */
-          margin: auto;
-        }
-      }
      @media (max-width: 768px) {
-  .second-banner {
-    flex-direction: column; /* stack image below text */
-    align-items: center;
-    padding: 1em; /* keep consistent padding on mobile */
-  }
+    .second-banner,
+    .third-banner,
+    .text-box {
+        padding: 1em; /* Keep padding for other banners */
+        font-size: 1rem;
+    }
 
-  .image-container,
-  .second-text {
-    max-width: 100%;
-    width: 100%;
-    margin-bottom: 1em; /* gentle spacing between sections */
-  }
+    /* Remove or override the padding on .banner only */
+    .banner {
+        padding: 0 !important; /* Force zero padding to hug the edges */
+    }
 }
 
+      @media (max-width: 768px) {
+        .second-banner {
+          flex-direction: column; /* stack image below text */
+          align-items: center;
+          padding: 1em; /* keep consistent padding on mobile */
+        }
 
-
+        .image-container,
+        .second-text {
+          max-width: 100%;
+          width: 100%;
+          margin-bottom: 1em; /* gentle spacing between sections */
+        }
+      }
 
       @media (max-width: 768px) {
         .nav-button {
@@ -528,32 +543,45 @@
     </header>
     <main>
       <!-- First Banner -->
-<div class="banner" style="background-image: url('images/banner.jpg')">
-  <div class="banner-text">
-    Enjoy a variety of coffees and freshly made food, while you browse our wide selection of books. There's always something new to discover.
-  </div>
-</div>
+      <div class="banner">
+        <img
+          src="images/beans.jpg"
+          alt="Books & Brew main Banner"
+          class="banner-img"
+        />
+        <div class="banner-text">
+          Enjoy a variety of coffees and freshly made food, while you browse our
+          wide selection of books. There's always something new to discover.
+        </div>
+      </div>
 
-<!-- Accent Rectangle -->
-<div class="accent-rectangle"></div>
+      <!-- Accent Rectangle -->
+      <div class="accent-rectangle"></div>
 
-    <!-- Second Banner -->
-<div class="second-banner">
-  <div class="second-text">
-    <h4>Menu Brew:</h4>
-    <p>We pride are ourselves on our wide range of coffees and teas for all patrons to enjoy<br />
-      come and take a look at we have in store for you</p>
-    <button class="nav-button" onclick="window.location.href='menu.html'">
-      Our Menu
-    </button>
-  </div>
-  <div class="image-container">
-    <img src="images/Doublecoffee.jpg" alt="Books & Brew Second Banner" class="banner-img" />
-  </div>
-</div>
+      <!-- Second Banner -->
+      <div class="second-banner">
+        <div class="second-text">
+          <h4>Menu Brew:</h4>
+          <p>
+            We pride are ourselves on our wide range of coffees and teas for all
+            patrons to enjoy<br />
+            come and take a look at we have in store for you
+          </p>
+          <button class="nav-button" onclick="window.location.href='menu.html'">
+            Our Menu
+          </button>
+        </div>
+        <div class="image-container">
+          <img
+            src="images/Doublecoffee.jpg"
+            alt="Books & Brew Second Banner"
+            class="banner-img"
+          />
+        </div>
+      </div>
 
-<!-- Second Accent Rectangle -->
-<div class="second-accent-rectangle"></div>
+      <!-- Second Accent Rectangle -->
+      <div class="second-accent-rectangle"></div>
 
       <!-- Third Banner -->
       <div class="third-banner">
