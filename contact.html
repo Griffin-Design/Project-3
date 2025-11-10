@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Navigation Example</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+    html,
+      body {
+        font-family: "Inter", sans-serif;
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+        background: #E6E2D7;
+      }
+
+
+    h1, h2, h3, h4, h5, h6,
+    p, a, input, textarea, button, label, span, div {
+    font-family: 'Inter', sans-serif;
+    }
+
+
+
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* full viewport height */
+      }
+
+      main {
+        flex: 1 0 auto; /* grows with content */
+        padding: 0; /* remove top/bottom padding to avoid extra space */
+      }
+
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+      a:hover {
+        opacity: 0.8;
+      }
+
+      header {
+        background-color: #abbf9a;
+        position: relative;
+        z-index: 10;
+        width: 100%;
+        padding: 1em 0;
+      }
+
+      #logo {
+        display: flex;
+        align-items: center;
+        font-family: Inter;
+        font-size: 28px;
+        font-weight: 700;
+        color: #000;
+      }
+      .header-icon {
+        width: auto; /* keeps original aspect ratio */
+        height: 56px; /* slightly bigger than text (28px) */
+        margin-right: 10px; /* space between SVG and text */
+      }
+      .banner {
+        width: 100%;
+        height: 400px; /* adjust as needed */
+        background-color: #ddd; /* placeholder background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative; /* for banner-text absolute positioning */
+        margin: 0; /* ensures it touches header */
+      }
+
+      .banner-image img.banner-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* ensures it covers the banner area nicely */
+        display: block;
+        }
+
+
+      .accent-rectangle {
+        width: 100%;
+        max-width: 100%; /* ensure it doesn't exceed viewport */
+        height: 110px;
+        background-color: #e5cdb1; /* visible color */
+        border: 1px solid #a1663c;
+        margin: 0; /* no spacing */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #3e1d0e;
+        box-sizing: border-box; /* important! */
+      }
+      #toggle-nav-btn {
+        display: none;
+        position: absolute;
+        right: 1em;
+        top: 1em;
+      }
+      #primary-nav {
+        display: flex;
+        align-items: center;
+      }
+      #primary-nav ul {
+        padding-left: 0;
+        display: flex;
+        gap: 2em;
+        margin: 0;
+      }
+      #primary-nav li {
+        list-style: none;
+      }
+      #primary-nav a {
+        display: block;
+        padding: 1em;
+        color: #000;
+        font-family: Inter;
+      }
+      .container {
+        max-width: 1440px;
+        margin: 0 auto;
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+
+      header .container {
+        background-color: transparent !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        padding: 0 20px; /* add horizontal padding: 20px on left and right */
+        box-sizing: border-box;
+      }
+
+      .contact-info {
+        max-width: 600px; /* fits above contact form */
+        margin: 30px auto 20px auto; /* centers columns and positions above form */
+        display: flex;
+        justify-content: space-between; /* space between left and right column */
+        gap: 50px;
+        align-items: flex-start;
+      }
+      .info-left,
+      .info-right {
+        flex: 0 0 250px; /* fixed width for columns */
+      }
+
+      .info-left {
+        text-align: left; /* left-align email/phone */
+      }
+
+      .info-right {
+        text-align: left; /* left-align “Follow us on” and icons */
+      }
+
+      .info-left p,
+      .info-right p {
+        margin: 0 0 10px 0; /* spacing between text lines */
+      }
+
+      .social-icons.small {
+        display: flex;
+        justify-content: flex-start; /* icons left-aligned under text */
+        gap: 15px; /* spacing between icons */
+      }
+      .social-icons.small .svg-placeholder {
+        width: 30px; /* slightly smaller than footer icons */
+        height: 30px;
+      }
+
+      .contact-form-wrapper {
+        width: 100%;
+        padding: 5px 0 0 0; /* only top padding */
+        display: flex;
+        justify-content: center;
+        box-sizing: border-box;
+      }
+
+      .contact-form {
+        width: 600px;
+        max-width: 600px;
+        margin: 0 auto; /* remove vertical margin */
+        padding: 20px 40px;
+        text-align: center;
+      }
+
+      .contact-form input,
+      .contact-form textarea,
+      .contact-form button {
+        width: 100%; /* Makes all elements full width */
+        padding: 12px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+      }
+
+      .contact-form button {
+        color: white;
+        border: 1px solid #3e1d0e;
+        background: #a1663c;
+        cursor: pointer;
+        font-size: 1em;
+      }
+
+      .contact-form button:hover {
+        background-color: #c7814f;
+      }
+
+      footer {
+        background-color: #abbf9a;
+        width: 100%;
+        padding: 40px 0 60px 0; /* top 40px, right 0, bottom 60px, left 0 */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-sizing: border-box;
+      }
+
+      .footer-content {
+        width: 100%;
+        max-width: 1440px; /* constrain the content width */
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 40px;
+        padding: 0 40px; /* horizontal padding inside the 1440px box */
+        box-sizing: border-box;
+      }
+
+      .footer-left {
+        display: flex;
+        align-items: flex-start;
+        gap: 40px;
+      }
+
+      .footer-right {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+      }
+
+      .footer-logo img {
+        width: auto; /* matches the old placeholder */
+        height: 56px;
+        display: block;
+      }
+
+      .hours-block {
+        text-align: left;
+      }
+
+      .hours-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .hours-content {
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .svg-placeholder {
+        width: 40px;
+        height: 40px;
+        background-color: transparent;
+        transition: transform 0.2s ease;
+      }
+
+      .svg-placeholder:hover {
+        transform: scale(1.1);
+      }
+
+      .footer-divider {
+        width: 100%;
+        max-width: 1440px; /* divider also stays within layout width */
+        height: 1px;
+        background-color: #000;
+        margin-bottom: 20px;
+      }
+
+      .copyright {
+        text-align: center;
+        width: 100%;
+        max-width: 1440px;
+        padding: 0 40px;
+        box-sizing: border-box;
+      }
+      @media (max-width: 767px) {
+        header {
+          position: relative;
+          z-index: 1000;
+        }
+        header .container {
+          position: relative;
+        }
+        #primary-nav {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          height: 0;
+          background: #abbf9a;
+          display: grid;
+          grid-template-rows: 0fr;
+          transition: all 0.3s ease-out;
+          z-index: -1;
+          transform: translateY(-100%);
+          overflow: hidden;
+        }
+        #primary-nav .inner {
+          overflow: hidden;
+        }
+        #primary-nav ul {
+          margin: 0;
+          padding: 0;
+          flex-direction: column;
+          gap: 0;
+          background: #abbf9a;
+        }
+        #primary-nav li {
+          display: block;
+        }
+        #primary-nav a {
+          padding: 1em;
+          transition: background-color 0.2s ease;
+        }
+        #primary-nav a:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+        body.nav-open #primary-nav {
+          grid-template-rows: 1fr;
+          transform: translateY(0);
+          height: auto;
+        }
+        #toggle-nav-btn {
+          display: block;
+          position: absolute;
+          right: 1em;
+          top: 50%;
+          transform: translateY(-50%);
+          background: none;
+          border: none;
+          font-size: 24px;
+          cursor: pointer;
+          padding: 0.5em;
+          z-index: 1001;
+        }
+      }
+      @media (max-width: 767px) {
+        .contact-info {
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+          text-align: center;
+        }
+
+        .info-left,
+        .info-right {
+          flex: 1 1 auto;
+        }
+
+        .info-right {
+          text-align: center; /* center “Follow us on” and icons on mobile */
+        }
+
+        .social-icons.small {
+          justify-content: center; /* center icons on mobile */
+        }
+      }
+
+      @media (max-width: 767px) {
+        .footer-content {
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+          text-align: center;
+        }
+
+        .footer-left {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .hours-content {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .footer-right {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a href="index.html" id="logo">
+          <!-- Header SVG icon -->
+          <img src="SVG/B&B.svg" alt="Books & Brew Logo" class="header-icon" />
+          Books &amp; Brew
+        </a>
+        <button id="toggle-nav-btn"></button>
+        <nav id="primary-nav">
+          <div class="inner">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="story.html">Story</a></li>
+              <li><a href="menu.html">Menu</a></li>
+              <li><a href="schedule.html">Schedule</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="banner">
+      <div class="banner-image">
+        <img src="images/banner.jpg" alt="Books & Brew Banner" class="banner-img">
+      </div>
+    </div>
+
+    <div class="accent-rectangle">
+      <h2>Contact</h2>
+    </div>
+
+    <main>
+      <div class="contact-info">
+        <!-- Left Column -->
+        <div class="info-left">
+          <p>Email: Fakeshop@fakemail.com</p>
+          <p>Phone: (717) fake -8888</p>
+        </div>
+
+        <!-- Right Column -->
+        <div class="info-right">
+          <p>Follow us on:</p>
+          <div class="social-icons small">
+            <a href="#"
+              ><img
+                src="SVG/Instagram.svg"
+                class="svg-placeholder"
+                alt="Instagram"
+            /></a>
+            <a href="#"
+              ><img src="SVG/X.svg" class="svg-placeholder" alt="X"
+            /></a>
+            <a href="#"
+              ><img
+                src="SVG/Facebook.svg"
+                class="svg-placeholder"
+                alt="Facebook"
+            /></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrapper">
+        <div class="contact-form">
+          <h2>Contact Us</h2>
+          <form id="emailForm" action="send_email.php" method="POST">
+            <label for="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Your email"
+              required
+            />
+
+            <label for="message">Message:</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              placeholder="Your message"
+              required
+            ></textarea>
+
+            <button type="submit">Send</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Perform this after the window has loaded
+      window.onload = () => {
+        // First, tell JavaScript to remember which DOM element (in this case, a button) to reference (by id)
+        const toggleNavBtn = document.getElementById("toggle-nav-btn");
+        toggleNavBtn.innerHTML = "&#9776;";
+
+        // Tell button to do something on click
+        toggleNavBtn.addEventListener("click", () => {
+          // toggle the body's class attribute
+          document.body.classList.toggle("nav-open");
+          toggleNavBtn.innerHTML = document.body.classList.contains("nav-open")
+            ? "&#x2715"
+            : "&#9776;";
+        });
+      };
+    </script>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-left">
+          <!-- Replace logo placeholder with SVG -->
+          <div class="footer-logo">
+            <img src="SVG/B&B.svg" alt="Books & Brew Logo" />
+          </div>
+          <div class="hours-block">
+            <div class="hours-title">OUR HOURS</div>
+            <div class="hours-content">
+              <span>Monday - Saturday<br />7 am - 4 pm</span>
+              <span style="margin-left: 40px">Sunday<br />8 am - 4 pm</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-right">
+          <div class="social-icons">
+            <a href="#"
+              ><img
+                src="SVG/Instagram.svg"
+                class="svg-placeholder"
+                alt="Instagram"
+            /></a>
+            <a href="#"
+              ><img src="SVG/X.svg" class="svg-placeholder" alt="X"
+            /></a>
+            <a href="#"
+              ><img
+                src="SVG/Facebook.svg"
+                class="svg-placeholder"
+                alt="Facebook"
+            /></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+      <div class="copyright">© 2025 Books and Brew. All Rights Reserved.</div>
+    </footer>
+  </body>
+</html>

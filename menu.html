@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Navigation Example</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+    html,
+      body {
+        font-family: "Inter", sans-serif;
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+        background: #E6E2D7;
+      }
+
+
+    h1, h2, h3, h4, h5, h6,
+    p, a, input, textarea, button, label, span, div {
+    font-family: 'Inter', sans-serif;
+    }
+
+
+
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* full viewport height */
+      }
+
+      main {
+        flex: 1 0 auto; /* grows with content */
+        padding: 0; /* remove top/bottom padding to avoid extra space */
+      }
+
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+      a:hover {
+        opacity: 0.8;
+      }
+
+      header {
+        background-color: #abbf9a;
+        position: relative;
+        z-index: 10;
+        width: 100%;
+        padding: 1em 0;
+      }
+
+      #logo {
+        display: flex;
+        align-items: center;
+        font-family: Inter;
+        font-size: 28px;
+        font-weight: 700;
+        color: #000;
+      }
+      .header-icon {
+        width: auto; /* keeps original aspect ratio */
+        height: 56px; /* slightly bigger than text (28px) */
+        margin-right: 10px; /* space between SVG and text */
+      }
+      .banner {
+        width: 100%;
+        height: 400px; /* adjust as needed */
+        background-color: #ddd; /* placeholder background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative; /* for banner-text absolute positioning */
+        margin: 0; /* ensures it touches header */
+      }
+
+      .banner-image img.banner-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* ensures it covers the banner area nicely */
+        display: block;
+        }
+
+
+      .accent-rectangle {
+        width: 100%;
+        max-width: 100%; /* ensure it doesn't exceed viewport */
+        height: 110px;
+        background-color: #e5cdb1; /* visible color */
+        border: 1px solid #a1663c;
+        margin: 0; /* no spacing */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #3e1d0e;
+        box-sizing: border-box; /* important! */
+      }
+      #toggle-nav-btn {
+        display: none;
+        position: absolute;
+        right: 1em;
+        top: 1em;
+      }
+      #primary-nav {
+        display: flex;
+        align-items: center;
+      }
+      #primary-nav ul {
+        padding-left: 0;
+        display: flex;
+        gap: 2em;
+        margin: 0;
+      }
+      #primary-nav li {
+        list-style: none;
+      }
+      #primary-nav a {
+        display: block;
+        padding: 1em;
+        color: #000;
+        font-family: Inter;
+      }
+      .container {
+        max-width: 1440px;
+        margin: 0 auto;
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+
+      header .container {
+        background-color: transparent !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        padding: 0 20px; /* add horizontal padding: 20px on left and right */
+        box-sizing: border-box;
+      }
+
+       /* Menu list styling */
+      .menu-section {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+      }
+
+      .menu-section h3 {
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #3e1d0e;
+      }
+
+     .menu-list {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  margin-bottom: 1rem;
+  padding: 5px;
+  align-items: flex-start; /* Aligns the items to the left */
+  position: relative; /* Needed for the divider line */
+}
+
+.menu-item h4 {
+  color: #3e1d0e;
+  margin: 0;
+  position: relative; /* Position title above the line */
+  z-index: 1; /* Makes sure the title is above the line */
+  font-size: 1.25rem; /* Adjust the size as needed */
+}
+
+.menu-item p {
+  color: rgb(36, 36, 36);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding-top: 0.25rem; /* Adds a little space between the title and the line */
+  flex-wrap: wrap; /* Allow wrapping of content */
+  word-wrap: break-word; /* Break long words to avoid overflow */
+}
+
+.price {
+  color: #3e1d0e;
+  text-align: right;
+  margin-left: 10px;
+  font-weight: bold;
+  flex-shrink: 0; /* Prevents the price from shrinking */
+}
+
+.menu-item p::before {
+  content: "";
+  position: relative; /* Position relative to the p container */
+  width: 100%;
+  height: 1px; /* Makes it a thinner line */
+  background-color: #a1663c; /* Divider line color */
+  display: block; /* Ensures it takes up the full width */
+  margin-top: 5px; /* Adds space between text and the line */
+}
+
+
+
+      footer {
+        background-color: #abbf9a;
+        width: 100%;
+        padding: 40px 0 60px 0; /* top 40px, right 0, bottom 60px, left 0 */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-sizing: border-box;
+      }
+
+      .footer-content {
+        width: 100%;
+        max-width: 1440px; /* constrain the content width */
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 40px;
+        padding: 0 40px; /* horizontal padding inside the 1440px box */
+        box-sizing: border-box;
+      }
+
+      .footer-left {
+        display: flex;
+        align-items: flex-start;
+        gap: 40px;
+      }
+
+      .footer-right {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+      }
+
+      .footer-logo img {
+        width: auto; /* matches the old placeholder */
+        height: 56px;
+        display: block;
+      }
+
+      .hours-block {
+        text-align: left;
+      }
+
+      .hours-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .hours-content {
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .svg-placeholder {
+        width: 40px;
+        height: 40px;
+        background-color: transparent;
+        transition: transform 0.2s ease;
+      }
+
+      .svg-placeholder:hover {
+        transform: scale(1.1);
+      }
+
+      .footer-divider {
+        width: 100%;
+        max-width: 1440px; /* divider also stays within layout width */
+        height: 1px;
+        background-color: #000;
+        margin-bottom: 20px;
+      }
+
+      .copyright {
+        text-align: center;
+        width: 100%;
+        max-width: 1440px;
+        padding: 0 40px;
+        box-sizing: border-box;
+      }
+      @media (max-width: 767px) {
+        header {
+          position: relative;
+          z-index: 1000;
+        }
+        header .container {
+          position: relative;
+        }
+        #primary-nav {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          height: 0;
+          background: #abbf9a;
+          display: grid;
+          grid-template-rows: 0fr;
+          transition: all 0.3s ease-out;
+          z-index: -1;
+          transform: translateY(-100%);
+          overflow: hidden;
+        }
+        #primary-nav .inner {
+          overflow: hidden;
+        }
+        #primary-nav ul {
+          margin: 0;
+          padding: 0;
+          flex-direction: column;
+          gap: 0;
+          background: #abbf9a;
+        }
+        #primary-nav li {
+          display: block;
+        }
+        #primary-nav a {
+          padding: 1em;
+          transition: background-color 0.2s ease;
+        }
+        #primary-nav a:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+        body.nav-open #primary-nav {
+          grid-template-rows: 1fr;
+          transform: translateY(0);
+          height: auto;
+        }
+        #toggle-nav-btn {
+          display: block;
+          position: absolute;
+          right: 1em;
+          top: 50%;
+          transform: translateY(-50%);
+          background: none;
+          border: none;
+          font-size: 24px;
+          cursor: pointer;
+          padding: 0.5em;
+          z-index: 1001;
+        }
+      }
+
+@media (max-width: 767px) {
+  .menu-item p {
+    font-size: 14px; /* Adjust font size for small screens */
+  }
+  .price {
+    font-size: 1rem; /* Make sure the price fits */
+  }
+}
+
+
+      @media (max-width: 767px) {
+        .footer-content {
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+          text-align: center;
+        }
+
+        .footer-left {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .hours-content {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .footer-right {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a href="index.html" id="logo">
+          <!-- Header SVG icon -->
+          <img src="SVG/B&B.svg" alt="Books & Brew Logo" class="header-icon" />
+          Books &amp; Brew
+        </a>
+        <button id="toggle-nav-btn"></button>
+        <nav id="primary-nav">
+          <div class="inner">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="story.html">Story</a></li>
+              <li><a href="menu.html">Menu</a></li>
+              <li><a href="schedule.html">Schedule</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="banner">
+      <div class="banner-image">
+        <img src="images/banner.jpg" alt="Books & Brew Banner" class="banner-img">
+      </div>
+    </div>
+
+    <div class="accent-rectangle">
+      <h2>Menu</h2>
+
+    </div>
+
+   <main>
+  <!-- Coffees Section -->
+  <div class="menu-section">
+    <h3>Coffees</h3>
+    <ul class="menu-list">
+      <li class="menu-item">
+        <h4>Espresso</h4>
+        <p><span>Rich and bold espresso brewed to perfection.</span><span class="price">$2.50</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Americano</h4>
+        <p><span>Espresso diluted with hot water for a smooth, bold taste.</span><span class="price">$3.00</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Latte</h4>
+        <p><span>Espresso with steamed milk and a delicate foam.</span><span class="price">$4.00</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Cappuccino</h4>
+        <p><span>A smooth blend of espresso, steamed milk, and froth.</span><span class="price">$4.00</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Mocha</h4>
+        <p><span>Espresso with chocolate syrup, steamed milk, and whipped cream.</span><span class="price">$4.50</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Macchiato</h4>
+        <p><span>Espresso topped with a small amount of steamed milk.</span><span class="price">$4.50</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Flat White</h4>
+        <p><span>Espresso with velvety microfoam.</span><span class="price">$4.50</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Iced Coffee</h4>
+        <p><span>Chilled coffee served over ice.</span><span class="price">$4.00</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Cold Brew</h4>
+        <p><span>Cold brewed coffee for a smooth and less acidic taste.</span><span class="price">$4.50</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Frappuccino</h4>
+        <p><span>Blended coffee with ice and milk.</span><span class="price">$5.00</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Hot Chocolate</h4>
+        <p><span>Rich chocolate flavor, steamed milk, topped with whipped cream.</span><span class="price">$3.50</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Chai Tea Latte</h4>
+        <p><span>Spiced chai tea with steamed milk.</span><span class="price">$4.50</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Matcha Latte</h4>
+        <p><span>Japanese matcha tea with steamed milk.</span><span class="price">$4.50</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Herbal Tea</h4>
+        <p><span>Various herbal teas, naturally caffeine-free.</span><span class="price">$3.00</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Iced Tea</h4>
+        <p><span>Refreshing cold-brewed tea served over ice.</span><span class="price">$3.50</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Smoothie</h4>
+        <p><span>Fruit smoothie made with fresh ingredients.</span><span class="price">$5.00</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Croissant</h4>
+        <p><span>Flaky, buttery pastry.</span><span class="price">$2.50</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Bagel</h4>
+        <p><span>Soft, chewy bagel with your choice of spread.</span><span class="price">$3.00</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Muffin</h4>
+        <p><span>Freshly baked muffin with seasonal flavors.</span><span class="price">$2.50</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Scone</h4>
+        <p><span>Buttery, crumbly scone perfect with tea.</span><span class="price">$3.00</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Sandwich</h4>
+        <p><span>Choose from ham and cheese or turkey and avocado.</span><span class="price">$6.00</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Salad</h4>
+        <p><span>Chicken Caesar or Greek salad.</span><span class="price">$7.50</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Quiche</h4>
+        <p><span>Flaky pastry filled with egg, cheese, and savory ingredients.</span><span class="price">$5.50</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Fruit Parfait</h4>
+        <p><span>Fresh fruit layered with yogurt and granola.</span><span class="price">$4.50</span></p>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Teas Section -->
+  <div class="menu-section">
+    <h3>Teas</h3>
+    <ul class="menu-list">
+      <li class="menu-item">
+        <h4>Earl Grey</h4>
+        <p><span>Classic black tea with a hint of bergamot.</span><span class="price">$2.50</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>English Breakfast</h4>
+        <p><span>A strong black tea blend.</span><span class="price">$3.00</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Green Tea</h4>
+        <p><span>Refreshing and antioxidant-rich green tea.</span><span class="price">$4.00</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Jasmine Tea</h4>
+        <p><span>Fragrant green tea infused with jasmine flowers.</span><span class="price">$4.00</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Chamomile Tea</h4>
+        <p><span>Calming herbal tea to relax your mind and body.</span><span class="price">$4.50</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Peppermint Tea</h4>
+        <p><span>Refreshing peppermint leaves for a cool, minty taste.</span><span class="price">$4.50</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Rooibos Tea</h4>
+        <p><span>Caffeine-free, red herbal tea from South Africa.</span><span class="price">$4.50</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Matcha Tea</h4>
+        <p><span>Powdered green tea for a rich, earthy flavor.</span><span class="price">$4.00</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Oolong Tea</h4>
+        <p><span>Partially fermented tea, offering a rich flavor.</span><span class="price">$4.50</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>White Tea</h4>
+        <p><span>Delicate, lightly oxidized tea with a mild flavor.</span><span class="price">$3.50</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Herbal Blend</h4>
+        <p><span>Blends like hibiscus, ginger, and lemongrass.</span><span class="price">$4.50</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Chai Tea</h4>
+        <p><span>Spicy and flavorful black tea brewed with milk.</span><span class="price">$4.50</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Darjeeling Tea</h4>
+        <p><span>Light, aromatic black tea from India.</span><span class="price">$3.00</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Assam Tea</h4>
+        <p><span>Bold and malty black tea from Assam, India.</span><span class="price">$3.50</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Sencha Tea</h4>
+        <p><span>Japanese green tea with a fresh, grassy flavor.</span><span class="price">$5.00</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Genmaicha Tea</h4>
+        <p><span>Green tea with roasted brown rice for a nutty flavor.</span><span class="price">$2.50</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Pu-erh Tea</h4>
+        <p><span>Fermented tea with a deep, earthy flavor.</span><span class="price">$3.00</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Lemon Verbena Tea</h4>
+        <p><span>A refreshing herbal tea with a citrusy aroma.</span><span class="price">$2.50</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Mint Tea</h4>
+        <p><span>Refreshing and aromatic mint leaves.</span><span class="price">$3.00</span></p>
+      </li>
+      <li class="menu-item">
+        <h4>Berry Infusion</h4>
+        <p><span>Infused with raspberry, strawberry, or other berries.</span><span class="price">$2.50</span></p>
+      </li>
+    </ul>
+  </div>
+</main>
+
+    <script>
+      // Perform this after the window has loaded
+      window.onload = () => {
+        // First, tell JavaScript to remember which DOM element (in this case, a button) to reference (by id)
+        const toggleNavBtn = document.getElementById("toggle-nav-btn");
+        toggleNavBtn.innerHTML = "&#9776;";
+
+        // Tell button to do something on click
+        toggleNavBtn.addEventListener("click", () => {
+          // toggle the body's class attribute
+          document.body.classList.toggle("nav-open");
+          toggleNavBtn.innerHTML = document.body.classList.contains("nav-open")
+            ? "&#x2715"
+            : "&#9776;";
+        });
+      };
+    </script>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-left">
+          <!-- Replace logo placeholder with SVG -->
+          <div class="footer-logo">
+            <img src="SVG/B&B.svg" alt="Books & Brew Logo" />
+          </div>
+          <div class="hours-block">
+            <div class="hours-title">OUR HOURS</div>
+            <div class="hours-content">
+              <span>Monday - Saturday<br />7 am - 4 pm</span>
+              <span style="margin-left: 40px">Sunday<br />8 am - 4 pm</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-right">
+          <div class="social-icons">
+            <a href="#"
+              ><img
+                src="SVG/Instagram.svg"
+                class="svg-placeholder"
+                alt="Instagram"
+            /></a>
+            <a href="#"
+              ><img src="SVG/X.svg" class="svg-placeholder" alt="X"
+            /></a>
+            <a href="#"
+              ><img
+                src="SVG/Facebook.svg"
+                class="svg-placeholder"
+                alt="Facebook"
+            /></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+      <div class="copyright">© 2025 Books and Brew. All Rights Reserved.</div>
+    </footer>
+  </body>
+</html>
