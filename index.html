@@ -83,22 +83,23 @@
         margin-right: 10px; /* space between SVG and text */
       }
 
-      .accent-rectangle,
-      .second-accent-rectangle {
-        width: 100%;
-        height: 61px;
-        background-color: #e5cdb1;
-        border: 1px solid #a1663c;
-        margin: 0 auto; /* Center the rectangle */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.5em;
-        font-weight: bold;
-        color: #3e1d0e;
-        box-sizing: border-box;
-        margin-top: 2em; /* Add space above the rectangle */
-      }
+     .accent-rectangle,
+.second-accent-rectangle {
+  width: 100%;
+  height: 61px;
+  background-color: #e5cdb1;
+  border: 1px solid #a1663c;
+  margin: 0 auto; /* Center the rectangle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #3e1d0e;
+  box-sizing: border-box;
+  margin-top: 1em; /* Smaller spacing if needed */
+}
+
 
       .banner,
       .second-banner,
@@ -106,7 +107,6 @@
         max-width: 1440px;
         width: 100%;
         margin: 0 auto; /* Center the banner on screen */
-        padding: 2em; /* Optional: Add some breathing space inside the banner */
       }
       .banner {
         position: relative;
@@ -202,19 +202,23 @@
   background-color: #a1663c;
 }
 
-      .third-banner {
-        display: flex;
-        width: 100%;
-        height: 559px;
-      }
+     .third-banner {
+  display: flex;
+  width: 100%;
+  min-height: 300px; /* Ensure minimum height */
+}
+
+.text-box,
+.banner-right {
+  flex: 1;
+}
 
       .text-box {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  /* Remove this line if you want zero spacing */
-  /* gap: 1em; */
+  padding: 2em;
 }
 
 .text-box p,
@@ -227,26 +231,26 @@
 }
 
 
-      .text-box,
-      .banner-right {
-        max-width: 1440px;
-        width: 100%;
-        margin: 0 auto;
-        font-size: 1.5rem;
-        width: 720px;
-        box-sizing: border-box;
-        padding: 2em;
+   .text-box,
+.banner-right {
+  flex: 1;
+  box-sizing: border-box;
         color: #3e1d0e;
         font-size: 1.5em;
       }
 
-      .banner-right {
-        background-image: url("images/third-banner.jpg");
-        background-size: cover;
-        background-position: right center;
-      }
+ .banner-right {
+  flex: 1;
+  overflow: hidden; /* Prevents image overflow */
+}
 
-      footer {
+.banner-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Image fills container tightly, preserving aspect ratio */
+}
+
+   footer {
         background-color: #abbf9a;
         width: 100%;
         padding: 40px 0 60px 0; /* top 40px, right 0, bottom 60px, left 0 */
@@ -255,6 +259,7 @@
         align-items: center;
         box-sizing: border-box;
       }
+
 
       .footer-content {
         width: 100%;
@@ -332,6 +337,19 @@
         padding: 0 40px;
         box-sizing: border-box;
       }
+
+     @media (max-width: 768px) {
+  .third-banner {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .text-box,
+  .banner-right {
+    width: 100%;
+  }
+}
+
       @media (max-width: 767px) {
         header {
           position: relative;
@@ -507,10 +525,10 @@
 <button class="nav-button" onclick="window.location.href='story.html'">
   Our Story
 </button>
-
-
         </div>
-        <div class="banner-right"></div>
+        <div class="banner-right">
+              <img src="images/CoffeeGuy.jpg" alt="Books & Brew Banner" class="banner-img" />
+        </div>
       </div>
     </main>
 
