@@ -4,29 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Responsive Navigation Example</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="SVG/B&B.svg" type="image/svg+xml" />
+    <title>Books & Brew | Menu</title>
 
     <style>
       * {
         box-sizing: border-box;
       }
 
-    html,
+      html,
       body {
         font-family: "Inter", sans-serif;
         margin: 0;
         padding: 0;
         min-height: 100%;
-        background: #E6E2D7;
+        background: #e6e2d7;
       }
 
-
-    h1, h2, h3, h4, h5, h6,
-    p, a, input, textarea, button, label, span, div {
-    font-family: 'Inter', sans-serif;
-    }
-
-
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      a,
+      input,
+      textarea,
+      button,
+      label,
+      span,
+      div {
+        font-family: "Inter", sans-serif;
+      }
 
       body {
         display: flex;
@@ -84,8 +98,7 @@
         height: 100%;
         object-fit: cover; /* ensures it covers the banner area nicely */
         display: block;
-        }
-
+      }
 
       .accent-rectangle {
         width: 100%;
@@ -143,7 +156,7 @@
         box-sizing: border-box;
       }
 
-       /* Menu list styling */
+      /* Menu list styling */
       .menu-section {
         max-width: 1200px;
         margin: 20px auto;
@@ -157,58 +170,56 @@
         color: #3e1d0e;
       }
 
-     .menu-list {
-  list-style: none;
-  padding: 0;
-}
+      .menu-list {
+        list-style: none;
+        padding: 0;
+      }
 
-.menu-item {
-  display: flex;
-  flex-direction: column; /* Stack items vertically */
-  margin-bottom: 1rem;
-  padding: 5px;
-  align-items: flex-start; /* Aligns the items to the left */
-  position: relative; /* Needed for the divider line */
-}
+      .menu-item {
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        margin-bottom: 1rem;
+        padding: 5px;
+        align-items: flex-start; /* Aligns the items to the left */
+        position: relative; /* Needed for the divider line */
+      }
 
-.menu-item h4 {
-  color: #3e1d0e;
-  margin: 0;
-  position: relative; /* Position title above the line */
-  z-index: 1; /* Makes sure the title is above the line */
-  font-size: 1.25rem; /* Adjust the size as needed */
-}
+      .menu-item h4 {
+        color: #3e1d0e;
+        margin: 0;
+        position: relative; /* Position title above the line */
+        z-index: 1; /* Makes sure the title is above the line */
+        font-size: 1.25rem; /* Adjust the size as needed */
+      }
 
-.menu-item p {
-  color: rgb(36, 36, 36);
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin: 0;
-  padding-top: 0.25rem; /* Adds a little space between the title and the line */
-  flex-wrap: wrap; /* Allow wrapping of content */
-  word-wrap: break-word; /* Break long words to avoid overflow */
-}
+      .menu-item p {
+        color: rgb(36, 36, 36);
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin: 0;
+        padding-top: 0.25rem; /* Adds a little space between the title and the line */
+        flex-wrap: wrap; /* Allow wrapping of content */
+        word-wrap: break-word; /* Break long words to avoid overflow */
+      }
 
-.price {
-  color: #3e1d0e;
-  text-align: right;
-  margin-left: 10px;
-  font-weight: bold;
-  flex-shrink: 0; /* Prevents the price from shrinking */
-}
+      .price {
+        color: #3e1d0e;
+        text-align: right;
+        margin-left: 10px;
+        font-weight: bold;
+        flex-shrink: 0; /* Prevents the price from shrinking */
+      }
 
-.menu-item p::before {
-  content: "";
-  position: relative; /* Position relative to the p container */
-  width: 100%;
-  height: 1px; /* Makes it a thinner line */
-  background-color: #a1663c; /* Divider line color */
-  display: block; /* Ensures it takes up the full width */
-  margin-top: 5px; /* Adds space between text and the line */
-}
-
-
+      .menu-item p::before {
+        content: "";
+        position: relative; /* Position relative to the p container */
+        width: 100%;
+        height: 1px; /* Makes it a thinner line */
+        background-color: #a1663c; /* Divider line color */
+        display: block; /* Ensures it takes up the full width */
+        margin-top: 5px; /* Adds space between text and the line */
+      }
 
       footer {
         background-color: #abbf9a;
@@ -358,15 +369,14 @@
         }
       }
 
-@media (max-width: 767px) {
-  .menu-item p {
-    font-size: 14px; /* Adjust font size for small screens */
-  }
-  .price {
-    font-size: 1rem; /* Make sure the price fits */
-  }
-}
-
+      @media (max-width: 767px) {
+        .menu-item p {
+          font-size: 14px; /* Adjust font size for small screens */
+        }
+        .price {
+          font-size: 1rem; /* Make sure the price fits */
+        }
+      }
 
       @media (max-width: 767px) {
         .footer-content {
@@ -417,206 +427,348 @@
 
     <div class="banner">
       <div class="banner-image">
-        <img src="images/banner.jpg" alt="Books & Brew Banner" class="banner-img">
+        <img
+          src="images/banner.jpg"
+          alt="Books & Brew Banner"
+          class="banner-img"
+        />
       </div>
     </div>
 
     <div class="accent-rectangle">
       <h2>Menu</h2>
-
     </div>
 
-   <main>
-  <!-- Coffees Section -->
-  <div class="menu-section">
-    <h3>Coffees</h3>
-    <ul class="menu-list">
-      <li class="menu-item">
-        <h4>Espresso</h4>
-        <p><span>Rich and bold espresso brewed to perfection.</span><span class="price">$2.50</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Americano</h4>
-        <p><span>Espresso diluted with hot water for a smooth, bold taste.</span><span class="price">$3.00</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Latte</h4>
-        <p><span>Espresso with steamed milk and a delicate foam.</span><span class="price">$4.00</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Cappuccino</h4>
-        <p><span>A smooth blend of espresso, steamed milk, and froth.</span><span class="price">$4.00</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Mocha</h4>
-        <p><span>Espresso with chocolate syrup, steamed milk, and whipped cream.</span><span class="price">$4.50</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Macchiato</h4>
-        <p><span>Espresso topped with a small amount of steamed milk.</span><span class="price">$4.50</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Flat White</h4>
-        <p><span>Espresso with velvety microfoam.</span><span class="price">$4.50</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Iced Coffee</h4>
-        <p><span>Chilled coffee served over ice.</span><span class="price">$4.00</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Cold Brew</h4>
-        <p><span>Cold brewed coffee for a smooth and less acidic taste.</span><span class="price">$4.50</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Frappuccino</h4>
-        <p><span>Blended coffee with ice and milk.</span><span class="price">$5.00</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Hot Chocolate</h4>
-        <p><span>Rich chocolate flavor, steamed milk, topped with whipped cream.</span><span class="price">$3.50</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Chai Tea Latte</h4>
-        <p><span>Spiced chai tea with steamed milk.</span><span class="price">$4.50</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Matcha Latte</h4>
-        <p><span>Japanese matcha tea with steamed milk.</span><span class="price">$4.50</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Herbal Tea</h4>
-        <p><span>Various herbal teas, naturally caffeine-free.</span><span class="price">$3.00</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Iced Tea</h4>
-        <p><span>Refreshing cold-brewed tea served over ice.</span><span class="price">$3.50</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Smoothie</h4>
-        <p><span>Fruit smoothie made with fresh ingredients.</span><span class="price">$5.00</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Croissant</h4>
-        <p><span>Flaky, buttery pastry.</span><span class="price">$2.50</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Bagel</h4>
-        <p><span>Soft, chewy bagel with your choice of spread.</span><span class="price">$3.00</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Muffin</h4>
-        <p><span>Freshly baked muffin with seasonal flavors.</span><span class="price">$2.50</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Scone</h4>
-        <p><span>Buttery, crumbly scone perfect with tea.</span><span class="price">$3.00</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Sandwich</h4>
-        <p><span>Choose from ham and cheese or turkey and avocado.</span><span class="price">$6.00</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Salad</h4>
-        <p><span>Chicken Caesar or Greek salad.</span><span class="price">$7.50</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Quiche</h4>
-        <p><span>Flaky pastry filled with egg, cheese, and savory ingredients.</span><span class="price">$5.50</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Fruit Parfait</h4>
-        <p><span>Fresh fruit layered with yogurt and granola.</span><span class="price">$4.50</span></p>
-      </li>
-    </ul>
-  </div>
+    <main>
+      <!-- Coffees Section -->
+      <div class="menu-section">
+        <h3>Coffees</h3>
+        <ul class="menu-list">
+          <li class="menu-item">
+            <h4>Espresso</h4>
+            <p>
+              <span>Rich and bold espresso brewed to perfection.</span
+              ><span class="price">$2.50</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Americano</h4>
+            <p>
+              <span
+                >Espresso diluted with hot water for a smooth, bold taste.</span
+              ><span class="price">$3.00</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Latte</h4>
+            <p>
+              <span>Espresso with steamed milk and a delicate foam.</span
+              ><span class="price">$4.00</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Cappuccino</h4>
+            <p>
+              <span>A smooth blend of espresso, steamed milk, and froth.</span
+              ><span class="price">$4.00</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Mocha</h4>
+            <p>
+              <span
+                >Espresso with chocolate syrup, steamed milk, and whipped
+                cream.</span
+              ><span class="price">$4.50</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Macchiato</h4>
+            <p>
+              <span>Espresso topped with a small amount of steamed milk.</span
+              ><span class="price">$4.50</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Flat White</h4>
+            <p>
+              <span>Espresso with velvety microfoam.</span
+              ><span class="price">$4.50</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Iced Coffee</h4>
+            <p>
+              <span>Chilled coffee served over ice.</span
+              ><span class="price">$4.00</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Cold Brew</h4>
+            <p>
+              <span>Cold brewed coffee for a smooth and less acidic taste.</span
+              ><span class="price">$4.50</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Frappuccino</h4>
+            <p>
+              <span>Blended coffee with ice and milk.</span
+              ><span class="price">$5.00</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Hot Chocolate</h4>
+            <p>
+              <span
+                >Rich chocolate flavor, steamed milk, topped with whipped
+                cream.</span
+              ><span class="price">$3.50</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Chai Tea Latte</h4>
+            <p>
+              <span>Spiced chai tea with steamed milk.</span
+              ><span class="price">$4.50</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Matcha Latte</h4>
+            <p>
+              <span>Japanese matcha tea with steamed milk.</span
+              ><span class="price">$4.50</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Herbal Tea</h4>
+            <p>
+              <span>Various herbal teas, naturally caffeine-free.</span
+              ><span class="price">$3.00</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Iced Tea</h4>
+            <p>
+              <span>Refreshing cold-brewed tea served over ice.</span
+              ><span class="price">$3.50</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Smoothie</h4>
+            <p>
+              <span>Fruit smoothie made with fresh ingredients.</span
+              ><span class="price">$5.00</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Croissant</h4>
+            <p>
+              <span>Flaky, buttery pastry.</span
+              ><span class="price">$2.50</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Bagel</h4>
+            <p>
+              <span>Soft, chewy bagel with your choice of spread.</span
+              ><span class="price">$3.00</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Muffin</h4>
+            <p>
+              <span>Freshly baked muffin with seasonal flavors.</span
+              ><span class="price">$2.50</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Scone</h4>
+            <p>
+              <span>Buttery, crumbly scone perfect with tea.</span
+              ><span class="price">$3.00</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Sandwich</h4>
+            <p>
+              <span>Choose from ham and cheese or turkey and avocado.</span
+              ><span class="price">$6.00</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Salad</h4>
+            <p>
+              <span>Chicken Caesar or Greek salad.</span
+              ><span class="price">$7.50</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Quiche</h4>
+            <p>
+              <span
+                >Flaky pastry filled with egg, cheese, and savory
+                ingredients.</span
+              ><span class="price">$5.50</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Fruit Parfait</h4>
+            <p>
+              <span>Fresh fruit layered with yogurt and granola.</span
+              ><span class="price">$4.50</span>
+            </p>
+          </li>
+        </ul>
+      </div>
 
-  <!-- Teas Section -->
-  <div class="menu-section">
-    <h3>Teas</h3>
-    <ul class="menu-list">
-      <li class="menu-item">
-        <h4>Earl Grey</h4>
-        <p><span>Classic black tea with a hint of bergamot.</span><span class="price">$2.50</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>English Breakfast</h4>
-        <p><span>A strong black tea blend.</span><span class="price">$3.00</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Green Tea</h4>
-        <p><span>Refreshing and antioxidant-rich green tea.</span><span class="price">$4.00</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Jasmine Tea</h4>
-        <p><span>Fragrant green tea infused with jasmine flowers.</span><span class="price">$4.00</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Chamomile Tea</h4>
-        <p><span>Calming herbal tea to relax your mind and body.</span><span class="price">$4.50</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Peppermint Tea</h4>
-        <p><span>Refreshing peppermint leaves for a cool, minty taste.</span><span class="price">$4.50</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Rooibos Tea</h4>
-        <p><span>Caffeine-free, red herbal tea from South Africa.</span><span class="price">$4.50</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Matcha Tea</h4>
-        <p><span>Powdered green tea for a rich, earthy flavor.</span><span class="price">$4.00</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Oolong Tea</h4>
-        <p><span>Partially fermented tea, offering a rich flavor.</span><span class="price">$4.50</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>White Tea</h4>
-        <p><span>Delicate, lightly oxidized tea with a mild flavor.</span><span class="price">$3.50</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Herbal Blend</h4>
-        <p><span>Blends like hibiscus, ginger, and lemongrass.</span><span class="price">$4.50</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Chai Tea</h4>
-        <p><span>Spicy and flavorful black tea brewed with milk.</span><span class="price">$4.50</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Darjeeling Tea</h4>
-        <p><span>Light, aromatic black tea from India.</span><span class="price">$3.00</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Assam Tea</h4>
-        <p><span>Bold and malty black tea from Assam, India.</span><span class="price">$3.50</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Sencha Tea</h4>
-        <p><span>Japanese green tea with a fresh, grassy flavor.</span><span class="price">$5.00</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Genmaicha Tea</h4>
-        <p><span>Green tea with roasted brown rice for a nutty flavor.</span><span class="price">$2.50</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Pu-erh Tea</h4>
-        <p><span>Fermented tea with a deep, earthy flavor.</span><span class="price">$3.00</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Lemon Verbena Tea</h4>
-        <p><span>A refreshing herbal tea with a citrusy aroma.</span><span class="price">$2.50</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Mint Tea</h4>
-        <p><span>Refreshing and aromatic mint leaves.</span><span class="price">$3.00</span></p>
-      </li>
-      <li class="menu-item">
-        <h4>Berry Infusion</h4>
-        <p><span>Infused with raspberry, strawberry, or other berries.</span><span class="price">$2.50</span></p>
-      </li>
-    </ul>
-  </div>
-</main>
+      <!-- Teas Section -->
+      <div class="menu-section">
+        <h3>Teas</h3>
+        <ul class="menu-list">
+          <li class="menu-item">
+            <h4>Earl Grey</h4>
+            <p>
+              <span>Classic black tea with a hint of bergamot.</span
+              ><span class="price">$2.50</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>English Breakfast</h4>
+            <p>
+              <span>A strong black tea blend.</span
+              ><span class="price">$3.00</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Green Tea</h4>
+            <p>
+              <span>Refreshing and antioxidant-rich green tea.</span
+              ><span class="price">$4.00</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Jasmine Tea</h4>
+            <p>
+              <span>Fragrant green tea infused with jasmine flowers.</span
+              ><span class="price">$4.00</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Chamomile Tea</h4>
+            <p>
+              <span>Calming herbal tea to relax your mind and body.</span
+              ><span class="price">$4.50</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Peppermint Tea</h4>
+            <p>
+              <span>Refreshing peppermint leaves for a cool, minty taste.</span
+              ><span class="price">$4.50</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Rooibos Tea</h4>
+            <p>
+              <span>Caffeine-free, red herbal tea from South Africa.</span
+              ><span class="price">$4.50</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Matcha Tea</h4>
+            <p>
+              <span>Powdered green tea for a rich, earthy flavor.</span
+              ><span class="price">$4.00</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Oolong Tea</h4>
+            <p>
+              <span>Partially fermented tea, offering a rich flavor.</span
+              ><span class="price">$4.50</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>White Tea</h4>
+            <p>
+              <span>Delicate, lightly oxidized tea with a mild flavor.</span
+              ><span class="price">$3.50</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Herbal Blend</h4>
+            <p>
+              <span>Blends like hibiscus, ginger, and lemongrass.</span
+              ><span class="price">$4.50</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Chai Tea</h4>
+            <p>
+              <span>Spicy and flavorful black tea brewed with milk.</span
+              ><span class="price">$4.50</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Darjeeling Tea</h4>
+            <p>
+              <span>Light, aromatic black tea from India.</span
+              ><span class="price">$3.00</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Assam Tea</h4>
+            <p>
+              <span>Bold and malty black tea from Assam, India.</span
+              ><span class="price">$3.50</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Sencha Tea</h4>
+            <p>
+              <span>Japanese green tea with a fresh, grassy flavor.</span
+              ><span class="price">$5.00</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Genmaicha Tea</h4>
+            <p>
+              <span>Green tea with roasted brown rice for a nutty flavor.</span
+              ><span class="price">$2.50</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Pu-erh Tea</h4>
+            <p>
+              <span>Fermented tea with a deep, earthy flavor.</span
+              ><span class="price">$3.00</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Lemon Verbena Tea</h4>
+            <p>
+              <span>A refreshing herbal tea with a citrusy aroma.</span
+              ><span class="price">$2.50</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Mint Tea</h4>
+            <p>
+              <span>Refreshing and aromatic mint leaves.</span
+              ><span class="price">$3.00</span>
+            </p>
+          </li>
+          <li class="menu-item">
+            <h4>Berry Infusion</h4>
+            <p>
+              <span>Infused with raspberry, strawberry, or other berries.</span
+              ><span class="price">$2.50</span>
+            </p>
+          </li>
+        </ul>
+      </div>
+    </main>
 
     <script>
       // Perform this after the window has loaded
